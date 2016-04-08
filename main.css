@@ -1,0 +1,37 @@
+.wrapper{
+    margin: 40px;
+}
+
+#mapPoints, #mapControls{
+    float: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#mapPoints{
+    margin-right: 10px;
+}
+
+#mapPoints .loader{
+    border: 5px solid #000;
+    width: 600px;
+    height: 600px;
+    padding: 10px;
+}
+
+#mapPoints svg{
+    border: 5px solid #000;
+}
+
+#mapControls{
+    margin-left: 10px;
+}
+
+#mapControls .controls{
+    float: left;
+    margin: 0 10px;
+}
+
+#mapControls a{
+    display: block;
+}

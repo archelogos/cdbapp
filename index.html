@@ -1,0 +1,58 @@
+<!doctype html>
+<html ng-app="cdbapp">
+  <head>
+    <meta charset="utf-8">
+    <title>CartoDB APP</title>
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="main.css">
+
+  </head>
+  <body ng-controller="DataRenderController as drc">
+
+    <div ng-cloak class="wrapper">
+
+        <h1>CartoDB Test - Sergio Gordillo</h1>
+        <h2><a target="_blank" href="https://twitter.com/Sergio_Gordillo">@Sergio_Gordillo</a></h2>
+
+        <div id="mapPoints">
+            <p class="loader" ng-show="drc.status === 'PROCESSING'">Processing</p>
+
+            <svg ng-show="drc.status === 'SUCCESS'" id="map" width="600" height="600" viewBox=""
+     preserveAspectRatio="xMinYMin meet" xmlns="http://www.w3.org/2000/svg">
+                <shape d="{{shape.path}}" fill="{{shape.fill}}" ng-repeat="shape in drc.shapesSVG"></shape>
+            </svg>
+
+        </div>
+
+        <div id="mapControls">
+            <div class="controls">
+                <a class="btn btn-default" href="" ng-click="drc.moveUp()">MoveUp</a>
+                <a class="btn btn-default" href="" ng-click="drc.moveDown()">MoveDown</a>
+                <a class="btn btn-default" href="" ng-click="drc.moveLeft()">MoveLeft</a>
+                <a class="btn btn-default" href="" ng-click="drc.moveRight()">MoveRight</a>
+            </div>
+            <div class="controls">
+                <a class="btn btn-default" href="" ng-click="drc.zoomIn()">ZoomIn</a>
+                <a class="btn btn-default" href="" ng-click="drc.zoomOut()">ZoomOut</a>
+            </div>
+            <div class="controls">
+                <a class="btn btn-default" href="" ng-click="drc.moreData()">More Data</a>
+            </div>
+            <div class="controls">
+                <select name="repeatSelect" id="repeatSelect" ng-model="drc.attr">
+                  <option ng-repeat="(key, option) in drc.features[0].properties" value="{{key}}">{{key}}</option>
+                </select>
+                <a class="btn btn-default" href="" ng-click="drc.render()">Render</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="main.js"></script>
+
+  </body>
+</html>
